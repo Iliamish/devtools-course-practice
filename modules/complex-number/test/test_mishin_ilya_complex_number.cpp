@@ -29,6 +29,6 @@ TEST(Mishin_Ilya_ComplexNumberTest, equalsZeroDivision) {
     ComplexNumber compx2;
     ComplexNumber compx3(1.25, 1.25);
     ComplexNumber compx4(1.23, 1.24);
-    
+
     ASSERT_TRUE(compx1 / compx3 == compx2 / compx4);
 }
