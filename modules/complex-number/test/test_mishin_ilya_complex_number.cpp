@@ -16,7 +16,7 @@ TEST(Mishin_Ilya_ComplexNumberTest, testSequentialOperationsSub) {
 }
 
 TEST(Mishin_Ilya_ComplexNumberTest, testSequentialOperationsMult) {
-    ComplexNumber compx1(-12,12);
+    ComplexNumber compx1(-12, 12);
     ComplexNumber compx2(1, 1);
     ComplexNumber compx3(2, 2);
     ComplexNumber compx4(3, 3);
@@ -28,7 +28,7 @@ TEST(Mishin_Ilya_ComplexNumberTest, testSequentialOperationsDiv) {
     double re = 1.0/3.0;
     double im = -1.0/3.0;
     ComplexNumber compx1(re, im);
-    ComplexNumber compx2(2,2);
+    ComplexNumber compx2(2, 2);
     ComplexNumber compx3(3, 3);
     ComplexNumber compx4(4, 4);
 
