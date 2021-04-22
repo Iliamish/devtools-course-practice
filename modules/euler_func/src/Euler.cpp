@@ -1,6 +1,6 @@
 // Copyright 2021 Mishin Ilya
 
-#include <vector>
+#include <cstdint>
 
 #include "include/Euler.h"
 
