@@ -1,6 +1,7 @@
 // Copyright 2021 Mishin Ilya
 
 #include <gtest/gtest.h>
+#include <tuple>
 
 #include "include/Euler.h"
 
@@ -8,33 +9,22 @@ TEST(Mishin_Euler, AssertThrow) {
     ASSERT_ANY_THROW(phi(-1));
 }
 
-TEST(Mishin_Euler, Check_0) {
-    ASSERT_EQ(0, phi(0));
+typedef testing::TestWithParam<std::tuple<int, int>> Parametrized;
+TEST_P(Parametrized, Check_) {
+    int a = std::get<0>(GetParam());
+    int b = std::get<1>(GetParam());
+    ASSERT_EQ(a, phi(b));
 }
 
-TEST(Mishin_Euler, Check_1) {
-    ASSERT_EQ(1, phi(1));
-}
-
-TEST(Mishin_Euler, Check_2) {
-    ASSERT_EQ(1, phi(2));
-}
-
-TEST(Mishin_Euler, Check_3) {
-    ASSERT_EQ(2, phi(3));
-}
-
-TEST(Mishin_Euler, Check_4) {
-    ASSERT_EQ(2, phi(4));
-}
-
-TEST(Mishin_Euler, Check_5) {
-    ASSERT_EQ(4, phi(5));
-}
-
-TEST(Mishin_Euler, Check_155) {
-    ASSERT_EQ(120, phi(155));
-}
+INSTANTIATE_TEST_CASE_P(/**/, Parametrized, ::testing::Values(
+    std::make_tuple(0, 0),
+    std::make_tuple(1, 1),
+    std::make_tuple(1, 2),
+    std::make_tuple(2, 3),
+    std::make_tuple(2, 4),
+    std::make_tuple(4, 5),
+    std::make_tuple(120, 155)
+));
 
 TEST(Mishin_Euler, Check_multiplicativity) {
     ASSERT_EQ(phi(5)*phi(7), phi(5*7));

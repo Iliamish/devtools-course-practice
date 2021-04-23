@@ -11,7 +11,7 @@ int64_t phi(int64_t n) {
         throw(1);
     }
     int64_t result = n;
-    for (int i = 2; i * i <= n; ++i)
+    for (int64_t i = 2; i * i <= n; ++i)
         if (n % i == 0) {
             while (n % i == 0)
                 n /= i;
