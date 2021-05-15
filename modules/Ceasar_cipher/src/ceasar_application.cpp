@@ -9,10 +9,12 @@
 #include "include/ceasar_application.h"
 
 std::string CeasarApplication::getHelp(const std::string& filename) const {
-    return "This is an application that designed for encryption and decryption Caesar chipher " \
+    return "This is an application that designed " \
+        "for encryption and decryption Caesar chipher " \
         "for given arguments. \n\n" \
         "Please provide arguments in the following format:\n$ " +
-        filename + " <-e \"encoded_string\"> or <-d \"decoded_string\"> [-k key {default = 1}] \n\n" \
+        filename + " <-e \"encoded_string\"> or <-d" +
+        " \"decoded_string\"> [-k key {default = 1}] \n\n" \
         "Example: " + filename + " -d \"cipher\" -k 2.\n\n";
 }
 
@@ -37,21 +39,21 @@ std::string CeasarApplication::operator()(int argc, const char** argv) const {
     bool decode;
     for (int i = 1; i < argc; ++i) {
         try {
-            if(std::string(argv[i]) == "-e"){
+            if (std::string(argv[i]) == "-e") {
                 cipher_str = std::string(argv[i + 1]);
                 ++i;
                 decode = false;
-            }else{
-                if(std::string(argv[i]) == "-d"){
+            } else {
+                if (std::string(argv[i]) == "-d") {
                     cipher_str = std::string(argv[i + 1]);
                     ++i;
                     decode = true;
-                }else{
-                    if(std::string(argv[i]) == "-k"){
+                } else {
+                    if (std::string(argv[i]) == "-k") {
                         key = checkKey(argv[i + 1]);
                         ++i;
-                    }else{
-                        throw std::runtime_error("ERROR: Wrong argument format!\n");
+                    } else {
+                    throw std::runtime_error("ERROR: Wrong argument format!\n");
                     }
                 }
             }
@@ -65,9 +67,9 @@ std::string CeasarApplication::operator()(int argc, const char** argv) const {
 
     try {
         CeasarCipher cipherator;
-        if(decode){
+        if (decode) {
             res = cipherator.decode(cipher_str, key);
-        }else{
+        } else {
             res = cipherator.encode(cipher_str, key);
         }
     }
