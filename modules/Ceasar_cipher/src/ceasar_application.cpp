@@ -64,18 +64,13 @@ std::string CeasarApplication::operator()(int argc, const char** argv) const {
     }
 
     std::string res;
+    CeasarCipher cipherator;
+    if (decode) {
+        res = cipherator.decode(cipher_str, key);
+    } else {
+        res = cipherator.encode(cipher_str, key);
+    }
 
-    try {
-        CeasarCipher cipherator;
-        if (decode) {
-            res = cipherator.decode(cipher_str, key);
-        } else {
-            res = cipherator.encode(cipher_str, key);
-        }
-    }
-    catch (std::exception& exc) {
-        return exc.what() + getHelp(argv[0]);
-    }
     ss << res;
     return ss.str();
 }
